@@ -1,4 +1,4 @@
-const ethers = "hardhat";
+// const ethers = "hardhat";
 
 async function main() {
   const StakingToken = await ethers.getContractFactory("StakingToken");
