@@ -294,8 +294,8 @@
       ]
     },
     "D:\\Defi-Farm\\contracts\\StakingToken.sol": {
-      "lastModificationDate": 1683703273741,
-      "contentHash": "78cf3befbb6bbeae7975a30abf6cb5e3",
+      "lastModificationDate": 1684073980631,
+      "contentHash": "4fde8613aff94dd7ef75fc39fa34e2f1",
       "sourceName": "contracts/StakingToken.sol",
       "solcConfig": {
         "version": "0.8.18",

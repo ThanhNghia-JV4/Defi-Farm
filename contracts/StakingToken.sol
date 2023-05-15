@@ -55,7 +55,8 @@ contract StakingToken is Ownable, ERC20{
      */
     function createStakingPool(StakeToken _stakeToken) external onlyOwner {
         Pool memory pool;
-        pool.stakeToken =  _stakeToken;
+        pool.stakeToken =  _stakeToken; //address cuar t hay address token ? 
+        
         pools.push(pool);
         uint256 poolId = pools.length - 1;
         emit PoolCreated(poolId);
