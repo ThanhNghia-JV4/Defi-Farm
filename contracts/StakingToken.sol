@@ -17,7 +17,7 @@ contract StakingToken is Ownable, ERC20{
 
     uint256 private rewardTokensPerBlock; // reward tokens gotten per block
     uint256 private constant BIG_INT_FORMATTER = 1e12; 
-
+    // BIG_INT_FORMATTER <=> eth
     // Each person staking
     struct StakerInfo {
         uint256 amount; // amount of staked token
@@ -118,8 +118,9 @@ contract StakingToken is Ownable, ERC20{
     }
 
     /**
-     * Collect rewards from a given pool id
+     * Collect rewards from a given pool id, 
      */
+     // lấy ID nhóm làm tham số. Chức năng tính toán phần thưởng cho người dùng dựa trên cổ phần của họ và phần thưởng tích lũy trên mỗi cổ phần, sau đó chuyển phần thưởng từ hợp đồng cho người dùng.
     function collectRewards(uint256 _poolId) public {
         updatePoolRewards(_poolId); 
         Pool storage pool = pools[_poolId];
@@ -134,7 +135,10 @@ contract StakingToken is Ownable, ERC20{
         emit CollectRewards(msg.sender, _poolId, rewardsToHarvest);
         rewardToken.mint(msg.sender, rewardsToHarvest);
     }
+    // Tỷ lệ lãi suất = ((Số lượng token thưởng được mỗi khối * Kích thước khối) / Tổng số token đang được đầu tư) * 100%
+    // Ví dụ: nếu rewardTokensPerBlock là 10 và tokensStaked là 1000, và kích thước khối là 1 giây, thì tỷ lệ lãi suất sẽ là:
 
+    // ((10 tokens/block * 1 block/second) / 1000 tokens) * 100% = 1% / giây.
     /**
      * Update pool's accumulatedRewardsPerShare and lastRewardedBlock
      */
